@@ -5,7 +5,7 @@ const Tabs = ({ tabs }: { tabs: { name: string, component: ReactNode, icon: stri
 
     return (
         <React.Fragment>
-            <div className=" tabs flex justify-center mb-3">
+            <div className=" sm:tabs  flex justify-center mb-10 md:mb-3">
                 {
                     tabs.map((tab, index) => (
                         <>
