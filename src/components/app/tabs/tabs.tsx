@@ -18,9 +18,7 @@ const Tabs = ({ tabs }: { tabs: { name: string, component: ReactNode, icon: stri
                     ))
                 }
             </div>
-           
                 {tabs[selected].component}
-          
         </React.Fragment>
     )
 }

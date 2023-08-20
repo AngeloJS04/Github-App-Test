@@ -1,38 +1,39 @@
-import { useGetMeQuery } from '@/redux/rtk/me';
-import React from 'react'
-import Link from 'next/link'
-import Icon from '../app/icons/icons';
 import { useDebounce } from '@/hooks/Debounce';
 import { useLazySearchRepositoriesQuery, useLazySearchUsersQuery } from '@/redux/rtk/search';
-import { useDispatch, useSelector } from 'react-redux';
 import { setRepositories } from '@/redux/slices/repositories/repositories.slice';
-import { RootState } from '@/redux/store';
-import { setUsers } from '@/redux/slices/users/users.slice';
 import { SearchByEnum, setSearchBy } from '@/redux/slices/searchBy/searchBy.slice';
+import { setUsers } from '@/redux/slices/users/users.slice';
+import { RootState } from '@/redux/store';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import NavDropdown from './navDropdown';
 
 
 const Navbar = ({ offset }: { offset: number }) => {
 
-  const { data: UserLogged } = useGetMeQuery({});
   const [search, setSearch] = React.useState<string>('');
   const repositories = useSelector((state: RootState) => state.repositories)
   const users = useSelector((state: RootState) => state.users)
   const SearchBy = useSelector((state: RootState) => state.searchBy.searchBy)
   const dispatch = useDispatch();
 
+  // Handle search input change
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)
 
+  // Debounce search term for efficient API calls
   const debouncedSearchTerm = useDebounce<string>(search, 2000)
 
+  // Lazy query hooks for searching repositories and users
   const [trigger] = useLazySearchRepositoriesQuery()
   const [data] = useLazySearchUsersQuery()
 
-
+  // Fetch data when debounced search term changes
   React.useEffect(() => {
     if (!debouncedSearchTerm) return;
-
-    // THIS FUNCTION GET THE DATA OF REPOSITORIES AND USERS FROM THE API
     const fetchData = async () => {
       try {
         const [reposResult, usersResult] = await Promise.all([
@@ -55,15 +56,13 @@ const Navbar = ({ offset }: { offset: number }) => {
             incomplete_results: usersResult.incomplete_results
           }));
         }
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) { console.log(err) }
     };
 
     fetchData();
   }, [debouncedSearchTerm, offset]);
 
-  // THIS FUNCTION CHANGE THE SEARCH BY REPOSITORIES OR USERS
+  // Handle search type selection
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     dispatch(setSearchBy({ searchBy: value }));
@@ -86,10 +85,9 @@ const Navbar = ({ offset }: { offset: number }) => {
             <option value="users">Users</option>
           </select>
           <div className="form-control pr-4 flex">
-
             <input type="text" onChange={handleSearch} placeholder={SearchBy === SearchByEnum.repositories ? 'Search repositories' : 'Search users'} autoComplete="off" name='search' className="input input-sm input-bordered w-32 md:w-80" />
           </div>
-         <NavDropdown />
+          <NavDropdown />
         </div>
       </div>
     </React.Fragment>

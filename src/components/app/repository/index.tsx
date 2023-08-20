@@ -6,8 +6,13 @@ import Icon from '../icons/icons'
 
 const Repository = ({ repo, favorite = false, col, handleFavorite, alReadyFav = false }: RepositoryPropsI) => {
 
+    // Define the maximum length for the displayed description
     const maxLength = 120;
+
+    // State to track if the repository is marked as favorite
     const [isFavorite, setIsFavorite] = React.useState(false);
+
+      // Create a truncated description for display
     const displayText = repo?.description ? repo?.description?.substring(0, maxLength - 3) + '...' : 'No description'
 
     return (
@@ -30,7 +35,6 @@ const Repository = ({ repo, favorite = false, col, handleFavorite, alReadyFav = 
                     <div>
                         <p className="text-gray-400 text-xs mt-1">{displayText}</p>
                     </div>
-
                     <div className='flex justify-around items-center contentBottom'>
                         {
                             repo.language && (

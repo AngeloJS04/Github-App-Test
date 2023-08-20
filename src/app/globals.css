@@ -2,21 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #292828;
-
-} */
-
-/* Skeleton */
 
 .avatar-skeleton {
   width: 250px;
   height: 250px;
   border-radius: 50%;
   margin: 0 auto;
-  /* background-color: #ccc; */
-    background-color: #3f3e3e;
+  background-color: #3f3e3e;
 }
 
 .title-skeleton,
@@ -29,7 +21,6 @@
   width: 100%;
   height: 24px;
   background-color: #3f3e3e;
-  /* background-color: #ccc; */
 }
 
 .text-skeleton {
@@ -43,7 +34,7 @@
 
 .profile.skeleton .text-skeleton {
   margin-block-start: 12px;
-  
+
 }
 
 .profile.skeleton .text-1 {
@@ -80,9 +71,11 @@
     transform: translateX(200%)
   }
 }
+
 .icons-size {
   font-size: 18px !important;
 }
+
 .contentBottom {
   position: absolute;
   bottom: 0;
@@ -90,11 +83,13 @@
   padding: 10px;
 
 }
+
 .repo-card {
-  max-height: 400px; 
+  max-height: 400px;
 }
-@media  (max-width: 768px) {
-  .icons-size  {
-   font-size: 12px !important;
+
+@media (max-width: 768px) {
+  .icons-size {
+    font-size: 12px !important;
   }
-} 
+}

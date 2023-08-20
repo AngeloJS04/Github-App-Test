@@ -1,14 +1,16 @@
 'use client'
 import { firebaseAuth, getProvider, getResultCredentialToken, TypeProvider } from '@/config/faribase/faribase';
+import { signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import React, { useContext } from 'react'
 import { useCookies } from "react-cookie";
-import {  signInWithPopup } from "firebase/auth";
 
 const AuthPage = () => {
+    // Use cookies for authentication token management
     const [cookies, setCookie, removeCookie] = useCookies(["auth-token"]);
     const router = useRouter();
 
+    
+    // OAuth authentication function
     const oAuth = async (name: TypeProvider) => {
         const provider = getProvider(name);
         const userCredential = await signInWithPopup(firebaseAuth, provider);
@@ -18,7 +20,6 @@ const AuthPage = () => {
         setCookie("auth-token", token, { path: "/" });
         if (token) router.push("/");
     };
-
 
     return (
         <div className='flex flex-col items-center mt-10'>
