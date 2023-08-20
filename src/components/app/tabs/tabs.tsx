@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react'
+import { TabI } from '@/interface/components/tab.interface';
+import React from 'react';
 
-const Tabs = ({ tabs }: { tabs: { name: string, component: ReactNode, icon: string }[] }) => {
+const Tabs = ({ tabs }: { tabs: TabI[]}) => {
     const [selected, setSelected] = React.useState(0);
 
     return (
