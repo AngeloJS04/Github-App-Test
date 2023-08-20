@@ -17,25 +17,25 @@
 To run the Github App Test locally on your machine, follow these steps:
 
 Clone this repository to your local machine:
-* git clone https://github.com/angeloJS04/github-app-test.git
+`git clone https://github.com/angeloJS04/github-app-test.git`
 
 Change into the project directory:
-* cd github-app-test
+`cd github-app-test`
 
 Install the required dependencies using npm:
-* npm install
+`npm install`
 
 # Usage
 After installing the dependencies, you can use the following scripts to interact with the application:
 
 To run the application in development mode:
-* npm run dev
+`npm run dev`
 
 To build the application for production:
-* npm run build
+`npm run build`
 
 To start the production server:
-*npm run start
+`npm run start`
 
 # KeyFeatures
 * Explore Users: Our application offers you the ability to browse a comprehensive list of GitHub users. With just a click, you can view a paginated list of users and their profiles.
