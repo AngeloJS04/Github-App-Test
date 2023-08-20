@@ -5,7 +5,7 @@
 * Welcome to the "Github App Test" repository! This project is a web application built to demonstrate the capabilities of various modern web development technologies. It utilizes Next.js for efficient and fast rendering, Redux Toolkit for state management, Firebase for backend services, and Tailwind CSS along with DaisyUI for styling.
 
 # Demo
-Click here to watch a video using the app [here]([https://www.youtube.com/watch?v=YOUR_VIDEO_ID_HERE](https://www.youtube.com/watch?v=5L74ozrDoR0)](https://www.youtube.com/watch?v=5L74ozrDoR0)) 
+Click [here](https://www.youtube.com/watch?v=5L74ozrDoR0) to view the demo using the app on YouTube.
 
 # Overview
 * The "Github App Test" aims to provide you with an exceptional experience while interacting with the GitHub API. It empowers you to access a wide range of GitHub data and functionalities quickly and effortlessly.
